@@ -1,0 +1,37 @@
+<ul class="menu-root">
+    <% ['api', 'style-guide'].indexOf(type) === -1 && site.pages.find({type: type}).sort('order').each(function (p) { %>
+        <% var fileName = p.path.replace(/^.+?\/([\w-]+)\.html/, '$1') %>
+        <% if (type === 'guide') { %>
+            <% if (fileName === 'installation') { %>
+                <li><h3>Основы</h3></li>
+            <% } %>
+            <% if (fileName === 'components-registration') { %>
+              <li><h3>Продвинутые компоненты</h3></li>
+            <% } %>
+            <% if (fileName === 'transitions') { %>
+                <li><h3>Переходы и анимации</h3></li>
+            <% } %>
+            <% if (fileName === 'mixins') { %>
+                <li><h3>Переиспользование и композиция</h3></li>
+            <% } %>
+            <% if (fileName === 'single-file-components') { %>
+                <li><h3>Инструментарий</h3></li>
+            <% } %>
+            <% if (fileName === 'routing') { %>
+                <li><h3>Масштабирование</h3></li>
+            <% } %>
+            <% if (fileName === 'reactivity') { %>
+                <li><h3>Продвинутые темы</h3></li>
+            <% } %>
+            <% if (fileName === 'migration') { %>
+                <li><h3>Вопросы миграции</h3></li>
+            <% } %>
+            <% if (fileName === 'comparison') { %>
+                <li><h3>Мета</h3></li>
+            <% } %>
+        <% } %>
+        <li>
+            <a href="<%- url_for(p.path) %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_new ? ' new' : '' %>"><%- p.title %></a>
+        </li>
+    <% }) %>
+</ul>
